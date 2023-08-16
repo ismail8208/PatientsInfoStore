@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row height d-flex justify-content-center align-items-center">
+        <div class="col-md-6">
+            <div class="form">
+                <i class="fa fa-search"></i>
+                <input type="text" class="form-control form-input" placeholder="Search anything..."
+                    [(ngModel)]="search">
+                <span class="left-pan">
+                    <select name="cars" id="cars" [(ngModel)]="searchBy">
+                        <option value="1">Name</option>
+                        <option value="2">File number</option>
+                        <option value="3">PhoneNumber</option>
+                    </select>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

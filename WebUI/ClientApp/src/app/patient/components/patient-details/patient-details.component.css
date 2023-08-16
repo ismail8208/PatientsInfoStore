@@ -1,0 +1,12 @@
+.btn-success {
+    border-radius: 20px;
+    background-color: #222831;
+    margin: 4%;
+    width: 10%;
+    height: 50px;
+    color: white;
+}
+.btn-success:active {
+    color:#222831;
+    background-color: white
+}

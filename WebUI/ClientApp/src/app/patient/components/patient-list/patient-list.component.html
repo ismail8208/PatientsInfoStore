@@ -1,0 +1,59 @@
+<div class="content">
+    <div class="container">
+        <div class="table-responsive custom-table-responsive">
+            <app-search (result)="result($event)"></app-search>
+            <button class="btn_primary" [routerLink]="['/create']"> Add Patient</button>
+            <table class="table custom-table">
+                <thead>
+                    <tr>
+                        <th scope="col">File Number</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Phone Number</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">City</th>
+                        <th scope="col">Birth Date</th>
+                        <th scope="col"></th>
+                        <th scope="col">
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let patient of patients">
+                    <tr scope="row">
+                        <td>{{patient.fileNo}}</td>
+                        <td>{{patient.name}}</td>
+                        <td>{{patient.phoneNumber}}</td>
+                        <td>{{patient.city}}</td>
+                        <td>{{patient.email}}</td>
+                        <td> {{patient.birthdate}}</td>
+                        <td> <a [routerLink]="['/details', patient.id]"> Details.. </a></td>
+                        <th scope="row">
+                            <a class='fa fa-edit' style="font-size: 140%" [routerLink]="['/update', patient.id]"></a>
+                            <span class="spr"></span>
+                            <a class='fa fa-trash' style="font-size: 130%;" (click)="deletePatient(patient.id)"></a>
+                        </th>
+                    </tr>
+
+
+                    <tr class="spacer">
+                        <td colspan="100">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <ngb-pagination 
+        [(page)]="currentPage" 
+        [pageSize]="itemsPerPage" 
+        [collectionSize]="totalCount!"
+        [boundaryLinks]="true" [maxSize]="3" 
+        [rotate]="true"
+        (pageChange)="getPatients(currentPage)" 
+        *ngIf="totalCount"
+        class="d-flex justify-content-center"></ngb-pagination>
+        <!-- manually -->
+        <!-- <app-pagination [totalPages]="totalPages" (currentPage)="changePageNumber($event)"></app-pagination> -->
+
+    </div>
+
+</div>

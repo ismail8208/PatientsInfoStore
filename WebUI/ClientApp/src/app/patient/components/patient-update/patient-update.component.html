@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="card">
+            <div class="row px-5 form-group">
+                <input class="text-muted bg-light mt-4 mb-3" placeholder="name" [(ngModel)]="patient.name"/>
+                <input class="text-muted bg-light mt-4 mb-3" placeholder="fileNo" [(ngModel)]="patient!.fileNo" type="number"/>
+                <input class="text-muted bg-light mt-4 mb-3" placeholder="citizenId" [(ngModel)]="patient!.citizenId"/>
+                <input class="text-muted bg-light mt-4 mb-3" placeholder="birthdate" [(ngModel)]="patient!.birthdate" type="date"/>
+                <input class="text-muted bg-light mt-4 mb-3" placeholder="gender" [(ngModel)]="patient!.gender" type="number" />
+                <input class="text-muted bg-light mt-4 mb-3" placeholder="natinality" [(ngModel)]="patient!.natinality"/>
+                <input class="text-muted bg-light mt-4 mb-3" placeholder="phoneNumber" [(ngModel)]="patient!.phoneNumber"/>
+                <input class="text-muted bg-light mt-4 mb-3" placeholder="email" [(ngModel)]="patient!.email"/>
+                <input class="text-muted bg-light mt-4 mb-3" placeholder="country" [(ngModel)]="patient!.country"/>
+                <input class="text-muted bg-light mt-4 mb-3" placeholder="city" [(ngModel)]="patient!.city"/>
+                <input class="text-muted bg-light mt-4 mb-3" placeholder="street" [(ngModel)]="patient!.street"/>
+                <input class="text-muted bg-light mt-4 mb-3" placeholder="address1" [(ngModel)]="patient!.address1"/>
+                <input class="text-muted bg-light mt-4 mb-3" placeholder="address2" [(ngModel)]="patient!.address2"/>
+                <input class="text-muted bg-light mt-4 mb-3" placeholder="contactPerson" [(ngModel)]="patient!.contactPerson"/>
+                <input class="text-muted bg-light mt-4 mb-3" placeholder="contactRelation" [(ngModel)]="patient!.contactRelation"/>
+                <input class="text-muted bg-light mt-4 mb-3" placeholder="contactPhone" [(ngModel)]="patient!.contactPhone"/>
+                <input class="text-muted bg-light mt-4 mb-3" placeholder="firstVisitDate" [(ngModel)]="patient!.firstVisitDate" type="date"/>
+            </div>
+            <div class="btn btn-success ml-auto" (click)="UpdatePatient()" >Update Patient</div>
+        </div>
+    </div>
+</div> 

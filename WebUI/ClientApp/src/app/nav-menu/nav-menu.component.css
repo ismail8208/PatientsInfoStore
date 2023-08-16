@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+html {
+  font-family: Montserrat, sans-serif;
+  font-size: 12px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+a {
+  text-decoration: none;
+  font-family: Montserrat, sans-serif;
+}
+
+  a:hover {
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  }
+
+.navbar {
+  position: relative;
+  padding: 10px;
+  transition: top 0.3s ease-in-out;
+  background-color: #06283D;
+  box-shadow: 10px 10px 20px -10px rgba(0,0,0,0.75);
+}
+
+/* Sticky behavior */
+/* .sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+} */
+/* .search-box {
+  position: relative;
+}
+.searchbar {
+  font-size: 12px;
+  width: 100%;
+  height: 15%;
+  border: none;
+  outline: none;
+  border-radius: 10rem;
+  padding: 10px;
+  transition: all .1s;
+  transition-delay: .1s;
+}
+
+.searchbar:hover {
+  color: #00ADB5;
+  border-radius: 0;
+  width: 20rem;
+} */
+
+a:focus {
+  color: #EEEEEE;
+}
