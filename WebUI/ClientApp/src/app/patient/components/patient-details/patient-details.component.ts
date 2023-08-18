@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { PatientService } from '../../services/patient.service';
-import { updatePatientCommand } from '../../models/UpdatePatientCommand';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Patient } from '../../models/Patient';
 

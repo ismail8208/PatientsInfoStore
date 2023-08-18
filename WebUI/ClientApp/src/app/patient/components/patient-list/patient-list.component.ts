@@ -3,6 +3,10 @@ import { PatientService } from '../../services/patient.service';
 import { IPatientDto } from '../../models/IPatientDto';
 import { IPaginatedListPatient } from '../../models/IPaginatedListPatient';
 import { ISearch } from '../search/search.component';
+import { Router } from '@angular/router';
+import { PatientCommandModalComponent } from '../patient-command-modal/patient-command-modal.component';
+import { SharedModalInfoService } from '../../services/shared-modal-info.service';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-patient-list',
@@ -12,13 +16,14 @@ import { ISearch } from '../search/search.component';
 export class PatientListComponent implements OnInit {
 
   patients: IPatientDto[] | undefined = [];
+  newPatient?: IPatientDto;
   totalCount?: number;
   currentPage: number = 1;
   itemsPerPage: number = 6;
   searchResult?: ISearch;
 
 
-  constructor(private patientService: PatientService) { }
+  constructor(private patientService: PatientService, private router: Router, private sharedService: SharedModalInfoService) { }
 
 
   result(res: ISearch) {
@@ -34,8 +39,16 @@ export class PatientListComponent implements OnInit {
       }
     })
   }
-
   ngOnInit(): void {
+    this.sharedService.data$.subscribe(
+      {
+        next: event => {
+          if (event) {
+            this.getPatients(this.currentPage);
+          }
+        }
+      }
+    )
   }
   deletePatient(userId?: string) {
     if (confirm(`Click OK to delete Patient`)) {
@@ -43,4 +56,18 @@ export class PatientListComponent implements OnInit {
       this.patients = this.patients!.filter(p => p.id !== userId);
     }
   }
+
+
+  //test 
+  onActivate(patientCommandModalComponent: PatientCommandModalComponent) {
+
+  }
+
+  // navigateToModal() {
+  //   const dataToSend = { message: 'Hello from HomeComponent' };
+
+  //   this.router.navigate(['Add'], {
+  //     state: { myData: dataToSend },
+  //   });
+  // }
 }

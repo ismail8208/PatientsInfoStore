@@ -2,7 +2,7 @@
     <div class="container">
         <div class="table-responsive custom-table-responsive">
             <app-search (result)="result($event)"></app-search>
-            <button class="btn_primary" [routerLink]="['/create']"> Add Patient</button>
+            <button class="btn_primary" [routerLink]="['/', { outlets:  { 'patient': ['add'] } } ]" routerLinkActive="active"> Add Patient</button>
             <table class="table custom-table">
                 <thead>
                     <tr>
@@ -28,7 +28,8 @@
                         <td> {{patient.birthdate}}</td>
                         <td> <a [routerLink]="['/details', patient.id]"> Details.. </a></td>
                         <th scope="row">
-                            <a class='fa fa-edit' style="font-size: 140%" [routerLink]="['/update', patient.id]"></a>
+                            <!-- <a class='fa fa-edit' style="font-size: 140%" [routerLink]="['/update', patient.id]"></a> -->
+                            <a class='fa fa-edit' style="font-size: 140%" [routerLink]="['/', { outlets: { 'update': patient.id }}]" routerLinkActive="active"></a>
                             <span class="spr"></span>
                             <a class='fa fa-trash' style="font-size: 130%;" (click)="deletePatient(patient.id)"></a>
                         </th>
@@ -57,3 +58,10 @@
     </div>
 
 </div>
+
+<!-- <button (click)="navigateToModal()">click to navigate  add </button> -->
+<!-- &nbsp;&nbsp;<a [routerLink]="['/', { outlets: { 'update': ['update'] }}]" routerLinkActive="active">Update</a><br>
+&nbsp;&nbsp;<a [routerLink]="['/', { outlets:  { 'patient': ['add'] } } ]" routerLinkActive="active">Add</a><br> -->
+<router-outlet></router-outlet>
+<router-outlet name="update" (activate)="onActivate($event)"></router-outlet>
+<router-outlet name="patient" (activate)="onActivate($event)"></router-outlet>

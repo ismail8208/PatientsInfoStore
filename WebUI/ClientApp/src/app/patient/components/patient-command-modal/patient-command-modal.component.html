@@ -1,0 +1,17 @@
+<div *ngIf="!isUpdate">
+  <div class="modal-header">
+    <h4 class="modal-title">Add Patient</h4>
+</div>
+<div class="modal-body">
+  <app-add-update-modal></app-add-update-modal>
+</div>
+</div>
+<div *ngIf="isUpdate">
+  <div class="modal-header">
+    <h4 class="modal-title">Update Patient</h4>
+</div>
+<div class="modal-body">
+  <app-add-update-modal [userId]="Data"></app-add-update-modal>
+</div>
+</div>
+

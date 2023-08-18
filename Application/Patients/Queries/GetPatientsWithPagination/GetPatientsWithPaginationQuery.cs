@@ -36,7 +36,7 @@ namespace Application.Patients.Queries.GetPatientsWithPagination
 					(int)SearchBy.Name => query.Where(P => P.Name.StartsWith(request.result)).OrderBy(p => p.Name),
 					(int)SearchBy.PhoneNumber => query.Where(P => P.PhoneNumber.StartsWith(request.result)).OrderBy(p => p.PhoneNumber),
 					(int)SearchBy.FileNo => query.Where(P => P.FileNo.ToString().StartsWith(request.result)).OrderBy(p => p.FileNo),
-					_ => query
+					_ => query.OrderByDescending(p => p.RecordCreationDate)
 				};
 			return await query.ProjectTo<PatientDto>(mapper.ConfigurationProvider).PaginatedListAsync(request.PageNumber, request.PageSize);
 		}

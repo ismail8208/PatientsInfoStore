@@ -4,18 +4,28 @@
     padding: 20px;
     margin: 0%;
 }
+
 .profile-pic {
-    
-        justify-content: left;
-          width: 80px;
-          height: 80px;
-          border-radius: 50%;
-          object-fit: cover;
-          margin: 12px 8px 12px 2px;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-        
-        
+
+    justify-content: left;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 12px 8px 12px 2px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+
+
 }
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: space-between;
+    
+}
+
 ::placeholder {
     color: black;
 }
@@ -33,18 +43,20 @@
     padding: 4px 40px;
     background-color: #222831;
     margin: 10%;
-} 
+}
+
 .btn-cancele {
     border-radius: 20px;
     padding: 4px 40px;
-  
-} 
+
+}
 
 .options-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
+
 .options {
     font-size: 23px;
     color: #757575;
@@ -60,11 +72,13 @@
     flex-direction: row;
     justify-content: space-between;
 }
+
 .left-options .options {
     margin-right: 50%;
 }
 
-.reacts , .reactspan {
+.reacts,
+.reactspan {
     border: 0;
     font-size: 1rem;
 
@@ -78,8 +92,8 @@
 }
 
 
-.btn-success{
-    background-color:#222831 ;
+.btn-success {
+    background-color: #222831;
 }
 
 input {
@@ -93,8 +107,9 @@ input {
     height: 40px !important;
     width: 100%;
 }
+
 input:focus {
     box-shadow: none !important;
     border: 1px solid #231E39 !important;
-    outline-width: 0 !important;  
-} 
+    outline-width: 0 !important;
+}

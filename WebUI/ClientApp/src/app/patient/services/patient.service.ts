@@ -2,9 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
 import { IPaginatedListPatient } from '../models/IPaginatedListPatient';
 import { Observable } from 'rxjs';
-import { CreatePatientCommand } from '../models/CreatePatientCommand';
-import { updatePatientCommand } from '../models/UpdatePatientCommand';
-import { Patient } from '../models/Patient';
+import { PatientCommand } from '../models/PatientCommand';
 
 @Injectable({
   providedIn: 'root'
@@ -25,15 +23,15 @@ export class PatientService {
     });
   }
   
-  create(createPatientCommand: CreatePatientCommand): Observable<any> {
+  create(createPatientCommand: PatientCommand): Observable<any> {
     return this._http.post<any>(this._baseUrl + 'api/Patients', createPatientCommand);
   }
-  update(updatePatientCommand: updatePatientCommand): Observable<any> {
+  update(updatePatientCommand: PatientCommand): Observable<any> {
     return this._http.put<any>(this._baseUrl + 'api/Patients', updatePatientCommand);
   }
 
-  Get(userId: string): Observable<Patient> {
-    return this._http.get<Patient>(this._baseUrl + `api/Patients/${userId}`);
+  Get(userId: string): Observable<PatientCommand> {
+    return this._http.get<PatientCommand>(this._baseUrl + `api/Patients/${userId}`);
   }
   Delete(userId: string): Observable<any> {
     return this._http.delete(this._baseUrl + `api/Patients/${userId}`);

@@ -1,4 +1,4 @@
-export class updatePatientCommand {
+export class PatientCommand {
     constructor(
         public id?: string,
         public name?: string,

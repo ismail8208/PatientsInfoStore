@@ -20,7 +20,12 @@
                 <input class="text-muted bg-light mt-4 mb-3" placeholder="contactPhone" [(ngModel)]="patient!.contactPhone"/>
                 <input class="text-muted bg-light mt-4 mb-3" placeholder="firstVisitDate" [(ngModel)]="patient!.firstVisitDate" type="date"/>
             </div>
-            <div class="btn btn-success ml-auto" (click)="UpdatePatient()" >Update Patient</div>
+            <div class="buttons">
+                <div class="btn btn-success ml-auto" (click)="onBack()"><i class='fa fa-arrow-left'></i></div>
+                <div class="btn btn-success ml-auto" (click)="UpdatePatient()" *ngIf="OpIsUpdate">{{textBtn}}</div>
+                <div class="btn btn-success ml-auto" (click)="AddPatient()" *ngIf="!OpIsUpdate">{{textBtn}}</div>
+            </div>
+
         </div>
     </div>
 </div> 
