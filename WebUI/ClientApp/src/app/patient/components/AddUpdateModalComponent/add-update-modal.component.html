@@ -1,31 +1,166 @@
 <div class="container">
     <div class="row d-flex justify-content-center">
         <div class="card">
-            <div class="row px-5 form-group">
-                <input class="text-muted bg-light mt-4 mb-3" placeholder="name" [(ngModel)]="patient.name"/>
-                <input class="text-muted bg-light mt-4 mb-3" placeholder="fileNo" [(ngModel)]="patient!.fileNo" type="number"/>
-                <input class="text-muted bg-light mt-4 mb-3" placeholder="citizenId" [(ngModel)]="patient!.citizenId"/>
-                <input class="text-muted bg-light mt-4 mb-3" placeholder="birthdate" [(ngModel)]="patient!.birthdate" type="date"/>
-                <input class="text-muted bg-light mt-4 mb-3" placeholder="gender" [(ngModel)]="patient!.gender" type="number" />
-                <input class="text-muted bg-light mt-4 mb-3" placeholder="natinality" [(ngModel)]="patient!.natinality"/>
-                <input class="text-muted bg-light mt-4 mb-3" placeholder="phoneNumber" [(ngModel)]="patient!.phoneNumber"/>
-                <input class="text-muted bg-light mt-4 mb-3" placeholder="email" [(ngModel)]="patient!.email"/>
-                <input class="text-muted bg-light mt-4 mb-3" placeholder="country" [(ngModel)]="patient!.country"/>
-                <input class="text-muted bg-light mt-4 mb-3" placeholder="city" [(ngModel)]="patient!.city"/>
-                <input class="text-muted bg-light mt-4 mb-3" placeholder="street" [(ngModel)]="patient!.street"/>
-                <input class="text-muted bg-light mt-4 mb-3" placeholder="address1" [(ngModel)]="patient!.address1"/>
-                <input class="text-muted bg-light mt-4 mb-3" placeholder="address2" [(ngModel)]="patient!.address2"/>
-                <input class="text-muted bg-light mt-4 mb-3" placeholder="contactPerson" [(ngModel)]="patient!.contactPerson"/>
-                <input class="text-muted bg-light mt-4 mb-3" placeholder="contactRelation" [(ngModel)]="patient!.contactRelation"/>
-                <input class="text-muted bg-light mt-4 mb-3" placeholder="contactPhone" [(ngModel)]="patient!.contactPhone"/>
-                <input class="text-muted bg-light mt-4 mb-3" placeholder="firstVisitDate" [(ngModel)]="patient!.firstVisitDate" type="date"/>
-            </div>
-            <div class="buttons">
-                <div class="btn btn-success ml-auto" (click)="onBack()"><i class='fa fa-arrow-left'></i></div>
-                <div class="btn btn-success ml-auto" (click)="UpdatePatient()" *ngIf="OpIsUpdate">{{textBtn}}</div>
-                <div class="btn btn-success ml-auto" (click)="AddPatient()" *ngIf="!OpIsUpdate">{{textBtn}}</div>
-            </div>
+            <form [formGroup]="patientForm" (ngSubmit)="sendFormData()" #myForm>
+                <div class="row px-5 form-group">
+                    <input class="text-muted bg-light mt-4 mb-3" id="name" name="name" placeholder="name"
+                        formControlName="name" />
+                    <div *ngIf="patientForm.controls.email.invalid &&(patientForm.controls.name?.dirty || patientForm.controls.name?.touched)
+                 ">
+                        <span class="text-danger" *ngIf="patientForm.controls.name.errors?.required">
+                            name is required.
+                        </span>
+                    </div>
+                    <input class="text-muted bg-light mt-4 mb-3" placeholder="file number" formControlName="fileNo"
+                        type="number" />
+                    <div *ngIf="patientForm.controls.fileNo.invalid &&(patientForm.controls.fileNo?.dirty || patientForm.controls.fileNo?.touched)
+                ">
+                        <span class="text-danger" *ngIf="patientForm.controls.fileNo.errors?.required">
+                            file number is required.
+                        </span>
+                    </div>
+                    <input class="text-muted bg-light mt-4 mb-3" placeholder="citizen Id" formControlName="citizenId" />
+                    <div *ngIf="patientForm.controls.citizenId.invalid &&(patientForm.controls.citizenId?.dirty || patientForm.controls.citizenId?.touched)
+                ">
+                        <span class="text-danger" *ngIf="patientForm.controls.citizenId.errors?.required">
+                            citizen Id is required.
+                        </span>
+                    </div>
+                    <input class="text-muted bg-light mt-4 mb-3" placeholder="birthdate" formControlName="birthdate"
+                        type="Date" />
+                    <div *ngIf="patientForm.controls.birthdate.invalid &&(patientForm.controls.birthdate?.dirty || patientForm.controls.birthdate?.touched)
+                ">
+                        <span class="text-danger" *ngIf="patientForm.controls.birthdate.errors?.required">
+                            birthdate is required.
+                        </span>
+                    </div>
+                    <!-- <input class="text-muted bg-light mt-4 mb-3" placeholder="gender" formControlName="gender"
+                        type="number" />
+                    <div *ngIf="patientForm.controls.gender.invalid &&(patientForm.controls.gender?.dirty || patientForm.controls.gender?.touched)
+                ">
+                        <span class="text-danger" *ngIf="patientForm.controls.gender.errors?.required">
+                            gender is required.
+                        </span>
+                    </div> -->
+                    <input class="text-muted bg-light mt-4 mb-3" placeholder="natinality"
+                        formControlName="natinality" />
+                    <div *ngIf="patientForm.controls.natinality.invalid &&(patientForm.controls.natinality?.dirty || patientForm.controls.natinality?.touched)
+                ">
+                        <span class="text-danger" *ngIf="patientForm.controls.natinality.errors?.required">
+                            natinality is required.
+                        </span>
+                    </div>
+                    <input class="text-muted bg-light mt-4 mb-3" placeholder="phone number"
+                        formControlName="phoneNumber" />
+                    <div *ngIf="patientForm.controls.phoneNumber.invalid &&(patientForm.controls.phoneNumber?.dirty || patientForm.controls.phoneNumber?.touched)
+                ">
+                        <span class="text-danger" *ngIf="patientForm.controls.phoneNumber.errors?.required">
+                            phone number is required.
+                        </span>
+                        <span class="text-danger" *ngIf="patientForm.controls.phoneNumber.errors?.pattern">
+                            Please enter a valid phone number (numbers only).
+                        </span>
+                    </div>
+                    <input class="text-muted bg-light mt-4 mb-3" placeholder="email" formControlName="email" />
+                    <div *ngIf="patientForm.controls.email.invalid &&(patientForm.controls.email?.dirty || patientForm.controls.email?.touched)
+                ">
+                        <span class="text-danger" *ngIf="patientForm.controls.email.errors?.required">
+                            email is required.
+                        </span>
+                        <span class="text-danger" *ngIf="patientForm.controls.email.errors?.email">
+                            Please enter a valid email (example@gmail.com).
+                        </span>
+                    </div>
+                    <input class="text-muted bg-light mt-4 mb-3" placeholder="country" formControlName="country" />
+                    <div *ngIf="patientForm.controls.country.invalid &&(patientForm.controls.country?.dirty || patientForm.controls.country?.touched)
+                ">
+                        <span class="text-danger" *ngIf="patientForm.controls.country.errors?.required">
+                            country is required.
+                        </span>
+                    </div>
+                    <input class="text-muted bg-light mt-4 mb-3" placeholder="city" formControlName="city" />
+                    <div *ngIf="patientForm.controls.city.invalid &&(patientForm.controls.city?.dirty || patientForm.controls.city?.touched)
+                ">
+                        <span class="text-danger" *ngIf="patientForm.controls.city.errors?.required">
+                            city is required.
+                        </span>
+                    </div>
+                    <input class="text-muted bg-light mt-4 mb-3" placeholder="street" formControlName="street" />
+                    <div *ngIf="patientForm.controls.street.invalid &&(patientForm.controls.street?.dirty || patientForm.controls.street?.touched)
+                ">
+                        <span class="text-danger" *ngIf="patientForm.controls.street.errors?.required">
+                            street is required.
+                        </span>
+                    </div>
+                    <input class="text-muted bg-light mt-4 mb-3" placeholder="address1" formControlName="address1" />
+                    <div *ngIf="patientForm.controls.address1.invalid &&(patientForm.controls.address1?.dirty || patientForm.controls.address1?.touched)
+                ">
+                        <span class="text-danger" *ngIf="patientForm.controls.address1.errors?.required">
+                            address1 is required.
+                        </span>
+                    </div>
+                    <input class="text-muted bg-light mt-4 mb-3" placeholder="address2" formControlName="address2" />
+                    <div *ngIf="patientForm.controls.address2.invalid &&(patientForm.controls.address2?.dirty || patientForm.controls.address2?.touched)
+                ">
+                        <span class="text-danger" *ngIf="patientForm.controls.address2.errors?.required">
+                            address2 is required.
+                        </span>
+                    </div>
+                    <input class="text-muted bg-light mt-4 mb-3" placeholder="contact person"
+                        formControlName="contactPerson" />
+                    <div *ngIf="patientForm.controls.contactPerson.invalid &&(patientForm.controls.contactPerson?.dirty || patientForm.controls.contactPerson?.touched)
+                ">
+                        <span class="text-danger" *ngIf="patientForm.controls.contactPerson.errors?.required">
+                            contact person is required.
+                        </span>
+                    </div>
+                    <input class="text-muted bg-light mt-4 mb-3" placeholder="contact relation"
+                        formControlName="contactRelation" />
+                    <div *ngIf="patientForm.controls.contactRelation.invalid &&(patientForm.controls.contactRelation?.dirty || patientForm.controls.contactRelation?.touched)
+                ">
+                        <span class="text-danger" *ngIf="patientForm.controls.contactRelation.errors?.required">
+                            contact relation is required.
+                        </span>
+                    </div>
+                    <input class="text-muted bg-light mt-4 mb-3" placeholder="contact phone"
+                        formControlName="contactPhone" />
+                    <div *ngIf="patientForm.controls.contactPhone.invalid &&(patientForm.controls.contactPhone?.dirty || patientForm.controls.contactPhone?.touched)
+                ">
+                        <span class="text-danger" *ngIf="patientForm.controls.contactPhone.errors?.required">
+                            contact phone is required.
+                        </span>
+                        <span class="text-danger" *ngIf="patientForm.controls.contactPhone.errors?.pattern">
+                            Please enter a valid contact phone (numbers only).
+                        </span>
+                    </div>
+                    <input class="text-muted bg-light mt-4 mb-3" placeholder="first visit date"
+                        formControlName="firstVisitDate" type="date" />
+                    <div *ngIf="patientForm.controls.firstVisitDate.invalid &&(patientForm.controls.firstVisitDate?.dirty || patientForm.controls.firstVisitDate?.touched)
+                ">
+                        <span class="text-danger" *ngIf="patientForm.controls.firstVisitDate.errors?.required">
+                            first visit date is required.
+                        </span>
+                    </div>
+                </div>
+                <div class="radio-form">
+                    <label style="width: 8%;margin: 5px;"><input id="female" value="1" type="radio"
+                            formControlName="gender"> Male</label>
+                    <label style="width: 8%;margin: 5px;"><input id="female" value="2" type="radio"
+                            formControlName="gender"> Female</label>
+                    <div *ngIf="patientForm.controls.gender.invalid &&(patientForm.controls.gender?.dirty || patientForm.controls.gender?.touched)
+                    ">
+                        <span class="text-danger" *ngIf="patientForm.controls.gender.errors?.required">
+                            gender is required.
+                        </span>
+                    </div>
 
+                </div>
+                <div class="buttons">
+                    <div class="btn btn-success ml-auto" (click)="onBack()"><i class='fa fa-arrow-left'></i></div>
+                    <button class="btn btn-success ml-auto" type="submit"
+                        [disabled]="!patientForm.valid">{{textBtn}}</button>
+                </div>
+            </form>
         </div>
     </div>
-</div> 
+</div>

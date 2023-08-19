@@ -1,0 +1,10 @@
+<form [formGroup]="patientForm" (ngSubmit)="onSubmit()">
+
+    <label for="first-name">First Name: </label>
+    <input id="first-name" type="text" formControlName="name">
+  
+    <label for="last-name">Last Name: </label>
+    <input id="last-name" type="text" formControlName="id">
+    <p>Complete the form to enable button.</p>
+    <button type="submit" [disabled]="!patientForm.valid">Submit</button>
+</form>
