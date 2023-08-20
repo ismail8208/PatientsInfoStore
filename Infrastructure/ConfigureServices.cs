@@ -1,5 +1,6 @@
 ﻿using Application.Common.Interfaces;
 using Hospital_Information_System.Infrastructure.Persistence;
+using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -14,6 +15,8 @@ public static class ConfigureServices
 			b => b.MigrationsAssembly("Infrastructure")));
 
 		services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
+		services.AddScoped<ApplicationDbContextInitialiser>();
+
 
 		return services;
 	}
