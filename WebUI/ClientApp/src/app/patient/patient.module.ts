@@ -10,7 +10,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PatientCommandModalComponent } from './components/patient-command-modal/patient-command-modal.component';
 import { ModalContainerComponent } from './components/modal-container/modal-container.component';
 import { AddUpdateModalComponent } from './components/AddUpdateModalComponent/add-update-modal.component';
-import { TestFromComponent } from './test/test-from.component';
 
 
 @NgModule({
@@ -21,7 +20,6 @@ import { TestFromComponent } from './test/test-from.component';
     SearchComponent,
     PatientCommandModalComponent,
     AddUpdateModalComponent,
-    TestFromComponent,
   ],
   imports: [
     CommonModule,

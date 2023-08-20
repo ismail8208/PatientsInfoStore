@@ -16,7 +16,7 @@ namespace Hospital_Information_System.Infrastructure.Persistence
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-			//modelBuilder.ApplyConfiguration(new PatientConfiguration());
+			modelBuilder.ApplyConfiguration(new PatientConfiguration());
 			base.OnModelCreating(modelBuilder);
 		}
 

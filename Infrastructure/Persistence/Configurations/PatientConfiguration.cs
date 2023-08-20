@@ -21,23 +21,6 @@ namespace Infrastructure.Persistence.Configurations
 			builder.Property(p => p.Email)
 				.HasMaxLength(30)
 				.IsRequired();
-			builder.HasData(SeedData());
-		}
-		public List<Patient> SeedData()
-		{
-
-			var patients = new List<Patient>();
-			using (StreamReader r = new StreamReader("DummyData.json"))
-			{
-				string json = r.ReadToEnd();
-				patients = JsonConvert.DeserializeObject<List<Patient>>(json);
-				foreach (var patient in patients)
-				{
-					patient.Id = Guid.NewGuid();
-				}
-			}
-
-			return patients;
 		}
 	}
 }
