@@ -56,18 +56,4 @@ export class PatientListComponent implements OnInit {
       this.patients = this.patients!.filter(p => p.id !== userId);
     }
   }
-
-
-  //test 
-  onActivate(patientCommandModalComponent: PatientCommandModalComponent) {
-
-  }
-
-  // navigateToModal() {
-  //   const dataToSend = { message: 'Hello from HomeComponent' };
-
-  //   this.router.navigate(['Add'], {
-  //     state: { myData: dataToSend },
-  //   });
-  // }
 }
